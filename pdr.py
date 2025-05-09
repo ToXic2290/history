@@ -25,11 +25,13 @@ async def start(message: types.Message):
     user_id = message.from_user.id
     questions = db.get('questions')
     que = random.choice(questions)
-    if len(db.get(f'u_{user_id}')) >= 90:
+    qdb = db.get(f'u_{user_id}')
+    if len(qdb) >= 90:
         return await message.reply("Вопросы закончились. Для очистки базы данных напиши /start")
-    while que in db.get(f'u_{user_id}'):
+    while que in qdb:
         que = random.choice(questions)
-    db.set(f'u_{user_id}', (db.get(f'u_{user_id}').append(que)))
+    qdb.append(que)
+    db.set(f"u_{user_id}")
     await message.reply(que)
 
 if __name__ == '__main__':
