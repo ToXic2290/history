@@ -31,7 +31,7 @@ async def start(message: types.Message):
     while que in qdb:
         que = random.choice(questions)
     qdb.append(que)
-    db.set(f"u_{user_id}")
+    db.set(f"u_{user_id}", qdb)
     await message.reply(que)
 
 if __name__ == '__main__':
