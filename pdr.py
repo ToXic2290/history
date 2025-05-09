@@ -29,7 +29,7 @@ async def start(message: types.Message):
         return await message.reply("Вопросы закончились. Для очистки базы данных напиши /start")
     while que in q:
         que = random.choice(questions)
-    db.set(f'u_{user_id', (db.get(f'u_{user_id}').append(que))
+    db.set(f'u_{user_id}', (db.get(f'u_{user_id}').append(que))
     await message.reply(que)
 
 if __name__ == '__main__':
