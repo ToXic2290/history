@@ -11,6 +11,8 @@ q = []
 API_TOKEN = '7243292421:AAG108PmUh_22ziyTwqc2fUmNy8xc0lGaAI'
 bot = Bot(token=API_TOKEN)
 dp = Dispatcher(bot)
+start_button = KeyboardButton('Старт')
+keyboard = ReplyKeyboardMarkup(resize_keyboard=True).add(start_button)
 
 @dp.message_handler(commands=['start'])
 async def send_welcome(message: types.Message):
